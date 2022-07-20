@@ -1,4 +1,4 @@
-import { defineComponent, getCurrentInstance, h, markRaw, onBeforeUnmount, onMounted, PropType, provide, ref, shallowRef, unref, watch } from 'vue';
+import { defineComponent, getCurrentInstance, h, markRaw, onBeforeUnmount, onMounted, PropType, provide, Ref, ref, shallowRef, unref, watch } from 'vue';
 import { FitBoundsOptions, LngLatBoundsLike, LngLatLike, Map as MaplibreMap, MapboxOptions, Style, TransformRequestFunction } from 'maplibre-gl';
 import { componentIdSymbol, emitterSymbol, isLoadedSymbol, mapSymbol, MglEvents, sourceIdSymbol } from '@/components/types';
 import { defaults } from '@/components/defaults';
@@ -84,7 +84,7 @@ export default defineComponent({
 
 		let resizeObserver: ResizeObserver;
 
-		provide(mapSymbol, map);
+		provide(mapSymbol, map as Ref<MaplibreMap>);
 		provide(isLoadedSymbol, isLoaded);
 		provide(componentIdSymbol, component.uid);
 		provide(sourceIdSymbol, '');
